@@ -1,7 +1,6 @@
 const expect = require('expect');
 const request = require('supertest');
 const { ObjectID } = require('mongodb');
-const { mongoose } = require('./../db/mongoose');
 
 const { app } = require('./../server');
 const { Todo } = require('./../models/todo');
@@ -102,11 +101,4 @@ describe('GET /todos/:id', () => {
             .expect(404)
             .end(done);
     });
-});
-
-after(done => {
-	mongoose.models = {};
-	mongoose.modelSchemas = {};
-	mongoose.connection.close();
-	done();
 });
